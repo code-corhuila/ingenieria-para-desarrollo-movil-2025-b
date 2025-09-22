@@ -1,0 +1,116 @@
+/* Home Page Styles for VetShop */
+
+.hero-section {
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  color: white;
+}
+
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stats-grid {
+  padding: 20px 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--ion-color-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-card ion-item {
+  --border-width: 0;
+  --inner-border-width: 0 0 1px 0;
+}
+
+.action-buttons {
+  padding: 20px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+/* Custom card styling */
+ion-card {
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+ion-card-header {
+  padding-bottom: 8px;
+}
+
+ion-card-title h1 {
+  margin: 10px 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  ion-card-title h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Color theme adjustments */
+.veterinary-primary {
+  --ion-color-primary: #2d8f5f;
+  --ion-color-primary-rgb: 45, 143, 95;
+}
+
+.badge-open {
+  background: var(--ion-color-success);
+  color: white;
+}
+
+/* Button hover effects */
+ion-button:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+/* Icon styling */
+ion-icon[size="large"] {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+/* Chip styling */
+ion-chip {
+  margin: 4px;
+  font-weight: 500;
+}
+
+/* List item hover effect */
+ion-item:hover {
+  background: rgba(var(--ion-color-primary-rgb), 0.05);
+  transition: background 0.3s ease;
+}

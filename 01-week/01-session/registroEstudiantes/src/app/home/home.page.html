@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registro Estudiantes CORHUILA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">CORHUILA</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Sistema de Registro de Estudiantes</strong>
+    <p>Aplicación móvil para gestionar el registro de estudiantes en CORHUILA</p>
+    
+    <ion-button expand="block" fill="solid" routerLink="/list">
+      <ion-icon name="list" slot="start"></ion-icon>
+      Ver Lista de Estudiantes
+    </ion-button>
+    
+    <ion-button expand="block" fill="outline" routerLink="/add">
+      <ion-icon name="add" slot="start"></ion-icon>
+      Registrar Nuevo Estudiante
+    </ion-button>
+  </div>
+</ion-content>

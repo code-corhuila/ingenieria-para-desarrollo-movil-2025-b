@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar Estudiante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información del Estudiante</ion-card-title>
+      <ion-card-subtitle>Complete todos los campos para registrar un nuevo estudiante</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre Completo</ion-label>
+        <ion-input [(ngModel)]="name" placeholder="Ej: Juan Pérez"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Correo Electrónico</ion-label>
+        <ion-input [(ngModel)]="email" type="email" placeholder="Ej: juan.perez@corhuila.edu.co"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Programa Académico</ion-label>
+        <ion-input [(ngModel)]="program" placeholder="Ej: Ingeniería de Sistemas"></ion-input>
+      </ion-item>
+
+      <div class="ion-margin-top">
+        <ion-button expand="block" (click)="saveStudent()" [disabled]="!name || !email || !program">
+          <ion-icon name="save" slot="start"></ion-icon>
+          Guardar Estudiante
+        </ion-button>
+        
+        <ion-button expand="block" fill="clear" routerLink="/list">
+          <ion-icon name="close" slot="start"></ion-icon>
+          Cancelar
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

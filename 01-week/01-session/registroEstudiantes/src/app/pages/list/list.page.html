@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Estudiantes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="students.length === 0" class="ion-padding ion-text-center">
+    <ion-icon name="school-outline" size="large" color="medium"></ion-icon>
+    <h2>No hay estudiantes registrados</h2>
+    <p>Haz clic en el botón + para agregar el primer estudiante</p>
+  </div>
+
+  <ion-list *ngIf="students.length > 0">
+    <ion-item *ngFor="let student of students" (click)="goToDetail(student.id)">
+      <ion-avatar slot="start">
+        <ion-icon name="person"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ student.name }}</h2>
+        <p>{{ student.program }}</p>
+        <p>{{ student.email }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="goToAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
