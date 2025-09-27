@@ -1,0 +1,132 @@
+// Estilos para el checkout - Simple y limpio
+// Header simple - azul como en la imagen
+ion-header {
+  ion-toolbar {
+    --background: #2196F3;
+    --color: white;
+
+    ion-title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+}
+
+// Contenido
+ion-content {
+  --background: #f5f7fa;
+  padding: 16px;
+}
+
+// Tarjeta simple
+ion-card {
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+
+  ion-card-header {
+    background: #f8f9fa;
+    padding: 16px;
+    border-bottom: 1px solid #e9ecef;
+
+    ion-card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 0;
+    }
+  }
+
+  ion-card-content {
+    padding: 0;
+
+    ion-list {
+      background: transparent;
+
+      ion-item {
+        --padding-start: 16px;
+        --padding-end: 16px;
+        --min-height: 48px;
+        --border-width: 0;
+        border-bottom: 1px solid #f1f3f4;
+        font-size: 14px;
+        color: #495057;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    // Total
+    h2 {
+      background: #e9ecef;
+      color: #2c3e50;
+      margin: 0;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      border-top: 1px solid #dee2e6;
+    }
+  }
+}
+
+// Botón verde como en la imagen
+ion-button[expand="block"] {
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --border-radius: 12px;
+  --background: #4CAF50;
+  --color: white;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+
+  &:hover {
+    --background: #45a049;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  ion-content {
+    padding: 12px;
+  }
+
+  ion-card {
+    border-radius: 12px;
+    margin-bottom: 16px;
+
+    ion-card-header {
+      padding: 12px;
+
+      ion-card-title {
+        font-size: 16px;
+      }
+    }
+
+    ion-card-content {
+      ion-list {
+        ion-item {
+          --padding-start: 12px;
+          --padding-end: 12px;
+          --min-height: 44px;
+          font-size: 13px;
+        }
+      }
+
+      h2 {
+        padding: 12px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  ion-button[expand="block"] {
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    font-size: 14px;
+  }
+}

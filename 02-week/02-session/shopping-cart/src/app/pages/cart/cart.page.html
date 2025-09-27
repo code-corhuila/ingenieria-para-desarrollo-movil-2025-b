@@ -1,0 +1,46 @@
+<!-- Encabezado -->
+<ion-header>
+    <ion-toolbar color="primary">
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista de productos si el carrito no está vacío -->
+  <ion-list *ngIf="cartItems.length; else empty">
+    <!-- Recorremos el arreglo de items -->
+    <ion-item *ngFor="let item of cartItems">
+      <ion-label>
+        <!-- Nombre del producto -->
+        <h2>{{ item.product.name }}</h2>
+        <!-- Cantidad seleccionada -->
+        <p>Cantidad: {{ item.quantity }}</p>
+      </ion-label>
+
+      <!-- Precio total de este ítem (precio * cantidad) -->
+      <ion-note slot="end">
+        \${{ item.product.price * item.quantity }}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje alternativo si el carrito está vacío -->
+  <ng-template #empty>
+    <ion-text color="medium">
+      <p class="ion-text-center">Tu carrito está vacío</p>
+    </ion-text>
+  </ng-template>
+</ion-content>
+
+<!-- Footer con el total y el botón de checkout -->
+<ion-footer *ngIf="cartItems.length">
+  <ion-toolbar>
+    <!-- Total calculado -->
+    <ion-title>Total: \${{ total }}</ion-title>
+
+    <!-- Botón para ir a la página de Checkout -->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/checkout">Checkout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

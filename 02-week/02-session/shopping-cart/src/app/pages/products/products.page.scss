@@ -1,0 +1,360 @@
+// Estilos para la lista de productos - Versión Mejorada
+.product-list {
+  padding: 8px 16px 100px 16px; // Espacio para el tab bar
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.product-card {
+  margin-bottom: 16px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+
+  // Efecto de brillo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
+  }
+
+  &:hover {
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px) scale(1.02);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  // Elimina bordes predeterminados
+  --border-width: 0;
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-height: auto;
+}
+
+.product-image {
+  --size: 90px;
+  --border-radius: 16px;
+  margin-right: 16px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+  }
+}
+
+.product-info {
+  flex: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .product-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-price {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+}
+
+.add-btn {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 12px;
+  min-width: 120px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+
+  // Gradiente personalizado para el botón
+  --background: linear-gradient(135deg, #4CAF50 0%, #45a049 50%, #3d8b40 100%);
+  --color: white;
+
+  // Efecto ripple mejorado
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: width 0.6s, height 0.6s;
+    transform: translate(-50%, -50%);
+  }
+
+  &:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  ion-icon {
+    font-size: 20px;
+    margin-right: 4px;
+  }
+
+  &:hover {
+    --background: linear-gradient(135deg, #45a049 0%, #3d8b40 50%, #2e7d32 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(76, 175, 80, 0.4);
+  }
+}
+
+// Header mejorado con gradiente
+ion-header {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  ion-toolbar {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color: white;
+    --padding-start: 20px;
+    --padding-end: 20px;
+
+    ion-title {
+      font-size: 28px;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.5px;
+    }
+  }
+}
+
+// Contenido con fondo mejorado
+ion-content {
+  --background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+// Animaciones
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+// Responsive design mejorado
+@media (max-width: 768px) {
+  .product-list {
+    padding: 8px 12px 100px 12px;
+  }
+
+  .product-card {
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .product-image {
+    --size: 70px;
+    margin-right: 12px;
+  }
+
+  .product-info {
+    .product-name {
+      font-size: 18px;
+    }
+
+    .product-price {
+      font-size: 16px;
+    }
+  }
+
+  .add-btn {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    font-size: 12px;
+    min-width: 100px;
+
+    ion-icon {
+      font-size: 18px;
+    }
+  }
+}
+
+// Estados mejorados
+.product-card {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+}
+
+.product-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+
+  .add-btn {
+    animation: pulse 1.5s infinite;
+  }
+}
+
+.product-card.out-of-stock {
+  opacity: 0.6;
+  filter: grayscale(0.3);
+
+  .add-btn {
+    --background: linear-gradient(135deg, #9e9e9e 0%, #757575 100%);
+    --color: white;
+
+    &::after {
+      content: 'Agotado';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 12px;
+      border-radius: 25px;
+    }
+  }
+}
+
+// Estado vacío mejorado
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+
+  ion-icon {
+    font-size: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+    animation: pulse 2s infinite;
+  }
+
+  h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: #7f8c8d;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+// Loading skeleton (opcional)
+.product-skeleton {
+  .product-image {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  .product-name,
+  .product-price {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+    color: transparent;
+  }
+}
+
+
+
+@keyframes loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

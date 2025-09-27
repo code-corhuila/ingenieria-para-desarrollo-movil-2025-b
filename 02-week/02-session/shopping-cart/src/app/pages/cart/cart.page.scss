@@ -1,0 +1,426 @@
+// Estilos para el carrito - Estilo Moderno Consistente
+// Header mejorado con gradiente
+ion-header {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #FF6B6B);
+
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  ion-toolbar {
+    --background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+    --color: white;
+    --padding-start: 20px;
+    --padding-end: 20px;
+
+    ion-title {
+      font-size: 28px;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.5px;
+    }
+  }
+}
+
+// Contenido con fondo mejorado
+ion-content {
+  --background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+  ion-list {
+    background: transparent;
+    padding: 16px;
+    padding-bottom: 100px; // Espacio para el footer
+  }
+}
+
+// Estilos para los items del carrito
+ion-item {
+  margin-bottom: 16px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  // Elimina bordes predeterminados
+  --border-width: 0;
+  --inner-padding-end: 16px;
+  --padding-start: 20px;
+  --padding-end: 0;
+  --min-height: 80px;
+
+  // Efecto de brillo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
+  }
+
+  &:hover {
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px) scale(1.02);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  ion-label {
+    margin: 12px 0;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 0 0 8px 0;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 600;
+      color: #7f8c8d;
+      margin: 0;
+      letter-spacing: 0.3px;
+    }
+  }
+
+  ion-note {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.5px;
+    margin-right: 12px;
+  }
+}
+
+// Estado vacío mejorado
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  padding: 40px 20px;
+
+  .empty-icon {
+    font-size: 120px;
+    background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 32px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  h2 {
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    color: #7f8c8d;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 300px;
+  }
+
+  .shop-button {
+    --padding-start: 32px;
+    --padding-end: 32px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    --border-radius: 30px;
+    --background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+    --color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 24px rgba(78, 205, 196, 0.4);
+
+    &:hover {
+      --background: linear-gradient(135deg, #44A08D 0%, #093637 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
+    }
+  }
+}
+
+// Footer mejorado
+ion-footer {
+  ion-toolbar {
+    --background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    --color: white;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+
+    ion-title {
+      font-size: 24px;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.5px;
+
+      // Efecto pulsante para el total
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+    }
+
+    ion-buttons {
+      ion-button {
+        --padding-start: 24px;
+        --padding-end: 24px;
+        --padding-top: 12px;
+        --padding-bottom: 12px;
+        --border-radius: 25px;
+        --background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+        --color: white;
+        font-weight: 700;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+
+        // Efecto ripple mejorado
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transition: width 0.6s, height 0.6s;
+          transform: translate(-50%, -50%);
+        }
+
+        &:active::before {
+          width: 300px;
+          height: 300px;
+        }
+
+        &:hover {
+          --background: linear-gradient(135deg, #44A08D 0%, #093637 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(78, 205, 196, 0.4);
+        }
+      }
+    }
+  }
+}
+
+// Animaciones
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Animaciones de entrada para los items
+ion-item {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  ion-content {
+    ion-list {
+      padding: 12px;
+      padding-bottom: 100px;
+    }
+  }
+
+  ion-item {
+    margin-bottom: 12px;
+    border-radius: 16px;
+    --padding-start: 16px;
+    --min-height: 70px;
+
+    ion-label {
+      h2 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    ion-note {
+      font-size: 16px;
+      margin-right: 8px;
+    }
+  }
+
+  .empty-cart {
+    height: 50vh;
+    padding: 20px;
+
+    .empty-icon {
+      font-size: 80px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    .shop-button {
+      --padding-start: 24px;
+      --padding-end: 24px;
+      --padding-top: 12px;
+      --padding-bottom: 12px;
+      font-size: 14px;
+    }
+  }
+
+  ion-footer {
+    ion-toolbar {
+      --padding-start: 16px;
+      --padding-end: 16px;
+
+      ion-title {
+        font-size: 20px;
+      }
+
+      ion-buttons {
+        ion-button {
+          --padding-start: 20px;
+          --padding-end: 20px;
+          --padding-top: 10px;
+          --padding-bottom: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+// Estados adicionales
+.cart-item-removing {
+  animation: slideOutRight 0.4s ease forwards;
+}
+
+.cart-updating {
+  opacity: 0.7;
+
+  ion-note {
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes slideOutRight {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Mejoras adicionales para el estado vacío
+ion-text {
+  &.empty-message {
+    display: block;
+    text-align: center;
+    padding: 60px 20px;
+
+    p {
+      font-size: 20px;
+      color: #7f8c8d;
+      font-weight: 600;
+      margin: 0;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.5s forwards;
+    }
+  }
+}
