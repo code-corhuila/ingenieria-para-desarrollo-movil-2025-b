@@ -1,46 +1,70 @@
-<!-- Encabezado -->
-<ion-header>
-    <ion-toolbar color="primary">
-    <ion-title>Carrito</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="welcome-container">
+  <div class="login-card cart-card-container">
+    <h2 class="app-title" *ngIf="!orderSummary">Mi Carrito</h2>
+    <h2 class="app-title" *ngIf="orderSummary">Resumen de la Compra</h2>
 
-<ion-content>
-  <!-- Lista de productos si el carrito no está vacío -->
-  <ion-list *ngIf="cartItems.length; else empty">
-    <!-- Recorremos el arreglo de items -->
-    <ion-item *ngFor="let item of cartItems">
-      <ion-label>
-        <!-- Nombre del producto -->
-        <h2>{{ item.product.name }}</h2>
-        <!-- Cantidad seleccionada -->
-        <p>Cantidad: {{ item.quantity }}</p>
-      </ion-label>
+    <p class="subtitle" *ngIf="!orderSummary">Revisa tus productos antes de pagar</p>
+    <p class="subtitle" *ngIf="orderSummary">Tu compra se ha confirmado exitosamente 🎉</p>
 
-      <!-- Precio total de este ítem (precio * cantidad) -->
-      <ion-note slot="end">
-        \${{ item.product.price * item.quantity }}
-      </ion-note>
-    </ion-item>
-  </ion-list>
+    <!-- 🛒 Carrito -->
+    <div *ngIf="!orderSummary">
+      <div class="cart-list" *ngIf="cartItems.length; else empty">
+        <div class="cart-item" *ngFor="let item of cartItems">
+          <div class="cart-info">
+            <h3 class="product-name">{{ item.product?.name }}</h3>
+            <p class="product-qty">Cantidad: {{ item.quantity }}</p>
+          </div>
 
-  <!-- Mensaje alternativo si el carrito está vacío -->
-  <ng-template #empty>
-    <ion-text color="medium">
-      <p class="ion-text-center">Tu carrito está vacío</p>
-    </ion-text>
-  </ng-template>
-</ion-content>
+          <div class="cart-note">
+            <span class="product-price">
+              ${{ (item.product?.price || 0) * item.quantity | number:'1.0-0' }}
+            </span>
+          </div>
+        </div>
+      </div>
 
-<!-- Footer con el total y el botón de checkout -->
-<ion-footer *ngIf="cartItems.length">
-  <ion-toolbar>
-    <!-- Total calculado -->
-    <ion-title>Total: \${{ total }}</ion-title>
+      <!-- Estado vacío -->
+      <ng-template #empty>
+        <div class="empty-cart">
+          <div class="empty-icon">🛒</div>
+          <h2 class="empty-title">Tu carrito está vacío</h2>
+          <p class="empty-subtitle">Agrega productos para comenzar tu compra.</p>
+          <button class="login-btn shop-button" routerLink="/productos">
+            Ir a comprar
+          </button>
+        </div>
+      </ng-template>
 
-    <!-- Botón para ir a la página de Checkout -->
-    <ion-buttons slot="end">
-      <ion-button routerLink="/checkout">Checkout</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
+      <!-- Footer con total -->
+      <div class="cart-footer" *ngIf="cartItems.length">
+        <div class="footer-toolbar">
+          <div class="footer-total">Total: ${{ total | number:'1.0-0' }}</div>
+          <button class="login-btn footer-checkout" (click)="checkout()">
+            Confirmar compra
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Resumen de la orden -->
+    <div *ngIf="orderSummary" class="order-summary">
+      <p><strong>ID de Orden:</strong> {{ orderSummary.id }}</p>
+      <p><strong>Total:</strong> ${{ orderSummary.total | number:'1.0-0' }}</p>
+      <p><strong>Estado:</strong> {{ orderSummary.status }}</p>
+      <p><strong>Fecha:</strong> {{ orderSummary.createdAt | date:'medium' }}</p>
+
+      <h3>Productos:</h3>
+      <div *ngFor="let item of orderSummary.items" class="cart-item">
+        <div class="cart-info">
+          <p>Producto ID: {{ item.productId }}</p>
+          <p>Cantidad: {{ item.quantity }}</p>
+          <p>Subtotal: ${{ item.subtotal | number:'1.0-0' }}</p>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <button class="login-btn" routerLink="/products">Seguir comprando</button>
+      </div>
+    </div>
+  </div>
+</div>

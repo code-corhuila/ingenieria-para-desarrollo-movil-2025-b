@@ -1,33 +1,41 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Productos</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" scroll-y="true">
+  <div class="welcome-container">
+    <div class="login-card product-card-container">
+      <h2 class="app-title">Catálogo</h2>
+      <p class="subtitle">Explora y agrega productos a tu carrito 🛒</p>
 
-<ion-content>
-  <ion-list class="product-list">
-    <ion-item *ngFor="let product of products" class="product-card" lines="none">
-      <!-- Imagen -->
-      <ion-thumbnail slot="start" class="product-image">
-        <img [src]="product.image || 'assets/default.png'" />
-      </ion-thumbnail>
+      <!-- Loader -->
+      <div *ngIf="loading" class="loading-container">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Cargando productos...</p>
+      </div>
 
-      <!-- Info -->
-      <ion-label class="product-info">
-        <h2 class="product-name">{{ product.name }}</h2>
-        <p class="product-price">\${{ product.price }}</p>
-      </ion-label>
+      <!-- Mensaje de error -->
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
-      <!-- Botón -->
-      <ion-button
-        (click)="addToCart(product)"
-        fill="solid"
-        color="success"
-        shape="round"
-        class="add-btn">
-        <ion-icon name="cart-outline" slot="start"></ion-icon>
-        Agregar
-      </ion-button>
-    </ion-item>
-  </ion-list>
+      <!-- Lista de productos -->
+      <div class="product-list" *ngIf="!loading && !errorMessage">
+        <div class="product-card" *ngFor="let product of products">
+
+          <!-- Info del producto -->
+          <div class="product-info">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p class="product-sku">SKU: {{ product.sku || 'Sin SKU' }}</p>
+            <p class="product-price">${{ product.price }}</p>
+            <p>Disponible: {{ product.stock }}</p>
+            <p class="product-description">
+              {{ product.description || 'Sin descripción' }}
+            </p>
+          </div>
+
+          <!-- Botón agregar -->
+          <button class="login-btn add-btn" (click)="addToCart(product)">
+            <span class="btn-icon">🛍️</span>
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </ion-content>
