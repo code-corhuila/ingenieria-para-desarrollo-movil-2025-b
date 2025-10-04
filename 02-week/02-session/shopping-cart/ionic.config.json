@@ -1,7 +1,0 @@
-{
-  "name": "shopping-cart",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}
