@@ -1,0 +1,571 @@
+:root {
+  --primary-blue: #7dd3fc;
+  --primary-blue-dark: #38bdf8;
+  --primary-blue-light: #bae6fd;
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --red-50: #fef2f2;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+}
+
+/* Fondo estilo pastel */
+.welcome-container {
+  display: flex;
+  flex-direction: column; /* columna en vez de centrar todo */
+  align-items: center;
+  justify-content: flex-start; /* que el contenido comience desde arriba */
+  min-height: 100%; /* que pueda crecer */
+  width: 100%;
+  background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 50%, #f0f9ff 100%);
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+}
+
+
+
+/* Círculos decorativos flotantes */
+.welcome-container::before,
+.welcome-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  animation: floatCircle 20s ease-in-out infinite;
+}
+
+.welcome-container::before {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.welcome-container::after {
+  width: 80px;
+  height: 80px;
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 3s;
+}
+
+/* Tarjeta de login con estilo minimalista */
+.login-card {
+  position: relative;
+  background: #ffffff5c;
+  border-radius: 32px;
+  box-shadow:
+    0 10px 40px rgba(125, 211, 252, 0.15),
+    0 0 0 1px rgba(125, 211, 252, 0.1);
+  padding: 48px 36px 36px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+/* Icono de carrito minimalista */
+.cart-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  border-radius: 28px;
+  color: black;
+  margin-bottom: 28px;
+  box-shadow:
+    0 8px 24px rgba(125, 211, 252, 0.2),
+    inset 0 -2px 8px rgba(125, 211, 252, 0.2);
+  animation: floatGentle 4s ease-in-out infinite;
+  position: relative;
+  border: 3px solid black;
+}
+
+.cart-icon svg {
+  width: 44px;
+  height: 44px;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 2px 4px rgba(125, 211, 252, 0.3));
+}
+
+/* Círculo decorativo en esquina */
+.login-card::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--sky-100);
+  border-radius: 50%;
+  top: -15px;
+  right: 30px;
+  opacity: 0.5;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Títulos minimalistas */
+.app-title {
+  margin: 0 0 12px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #222222;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: black;
+  margin: 0 0 36px 0;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* Formulario limpio */
+.login-form .form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: black;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  color: black;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 2px solid #393939;
+  border-radius: 16px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #bce3fd;
+  color: black;
+  font-weight: 400;
+}
+
+.login-form input::placeholder {
+  color: var(--gray-400);
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.15);
+}
+
+.login-form input:focus + .input-icon,
+.input-wrapper:focus-within .input-icon {
+  color: var(--primary-blue-dark);
+}
+
+/* Mensaje de error suave */
+.error-msg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #8b4c4c;
+  color: var(--red-600);
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  animation: shake 0.4s;
+  font-weight: 500;
+}
+
+.error-msg svg {
+  flex-shrink: 0;
+}
+
+/* Botón principal con estilo suave */
+.login-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  background: black;
+  // background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px #2224283d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.2px;
+}
+
+.login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(125, 211, 252, 0.45);
+}
+
+.login-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Divisor minimalista */
+.divider {
+  margin: 32px 0;
+  position: relative;
+  text-align: center;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: black;
+}
+
+.divider span {
+  position: relative;
+  background: white;
+  padding: 0 16px;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Links suaves */
+.extra-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  color: black;
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+}
+
+.link-btn:hover {
+  background: var(--sky-50);
+  color: var(--primary-blue-dark);
+  border-color: var(--primary-blue-light);
+  transform: translateY(-1px);
+}
+
+.link-btn svg {
+  transition: transform 0.3s;
+}
+
+.link-btn:hover svg {
+  transform: scale(1.05);
+}
+
+/* Animaciones suaves */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatCircle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-30px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .welcome-container {
+    padding: 16px;
+  }
+
+  .welcome-container::before {
+    width: 80px;
+    height: 80px;
+    top: 5%;
+    left: 5%;
+  }
+
+  .welcome-container::after {
+    width: 60px;
+    height: 60px;
+    bottom: 10%;
+    right: 5%;
+  }
+
+  .login-card {
+    padding: 40px 28px 32px;
+    border-radius: 28px;
+  }
+
+  .login-card::before {
+    width: 50px;
+    height: 50px;
+    top: -12px;
+    right: 25px;
+  }
+
+  .cart-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 24px;
+    margin-bottom: 24px;
+  }
+
+  .cart-icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .app-title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .login-form .form-group {
+    margin-bottom: 18px;
+  }
+
+  .login-form label {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .login-form input {
+    padding: 13px 14px 13px 44px;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+
+  .input-icon {
+    left: 14px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .login-btn {
+    font-size: 15px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .divider {
+    margin: 28px 0;
+  }
+
+  .link-btn {
+    padding: 12px 14px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .error-msg {
+    padding: 10px 14px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .login-card {
+    padding: 36px 24px 28px;
+  }
+
+  .cart-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cart-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+/* Contenedor de productos hereda fondo del login */
+.product-card-container {
+  max-width: 900px;
+  padding: 32px;
+}
+
+/* Grid de productos */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background: #ffffffd1;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(125, 211, 252, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 2px solid #393939;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(56, 189, 248, 0.3);
+}
+
+/* Imagen */
+.product-image {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--sky-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info */
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-blue-dark);
+  margin-bottom: 14px;
+}
+
+/* Botón agregar (hereda login-btn) */
+.add-btn {
+  font-size: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-top: auto;
+}
