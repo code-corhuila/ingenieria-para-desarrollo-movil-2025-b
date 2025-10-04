@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true" scroll-y="true">
+  <div class="welcome-container">
+    <div class="login-card product-card-container">
+      <h2 class="app-title">Catálogo</h2>
+
+
+      <!-- Loader -->
+      <div *ngIf="loading" class="loading-container">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Cargando productos...</p>
+      </div>
+
+      <!-- Mensaje de error -->
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <!-- Lista de productos -->
+      <div class="product-list" *ngIf="!loading && !errorMessage">
+        <div class="product-card" *ngFor="let product of products">
+
+          <!-- Info del producto -->
+          <div class="product-info">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <!-- <p class="product-sku">SKU: {{ product.sku || 'Sin SKU' }}</p> -->
+            <p class="product-price">${{ product.price }}</p>
+            <!-- <p>Disponible: {{ product.stock }}</p> -->
+            <!-- <p class="product-description">
+              {{ product.description || 'Sin descripción' }}
+            </p> -->
+          </div>
+
+          <!-- Botón agregar -->
+          <button class="login-btn add-btn" (click)="addToCart(product)">
+            <span class="btn-icon">🛍️</span>
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
