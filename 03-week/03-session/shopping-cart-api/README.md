@@ -60,7 +60,6 @@ Para ejecutar el proyecto es necesario contar con:
 ### 1. Clonar el repositorio
 ```bash
 git clone https://github.com/code-corhuila/ingenieria-para-desarrollo-movil-2025-b.git
-cd ingenieria-para-desarrollo-movil-2025-b/feature/activity/03-week/03-session/shopping-cart-api
 ```
 
 ### 2. Configurar variables de entorno
